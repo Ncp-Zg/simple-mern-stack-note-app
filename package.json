@@ -1,10 +1,11 @@
 {
   "name": "mern-stack-note-app-backend",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon backend/server.js"
+    "start": "nodemon backend/server.js",
+    "client": "npm start -- prefix frontend",
+    "dev": "concurrently \"npm start\" \"npm run client\""
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +13,7 @@
     "concurrently": "^6.4.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "mongoose": "^6.0.13",
     "nodemon": "^2.0.15"
   }
 }
