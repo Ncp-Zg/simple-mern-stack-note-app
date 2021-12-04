@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Loading from "../../components/Loading";
 import MainScreen from "../../components/MainScreen";
 import "./LoginScreen.css"
 
@@ -42,6 +43,7 @@ const LoginScreen = () => {
   return (
     <MainScreen title="Login">
         <div className="loginContainer">
+            {loading && <Loading/>}
       <Form onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
