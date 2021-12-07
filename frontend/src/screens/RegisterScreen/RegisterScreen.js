@@ -79,7 +79,6 @@ const RegisterScreen = () => {
     }
   };
 
-  console.log();
 
   return (
     <MainScreen title="REGISTER">
