@@ -1,5 +1,5 @@
 
-import axios from "axios";
+
 import React, {useEffect, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -27,7 +27,7 @@ const LoginScreen = () => {
       if(userInfo){
         navigate("/mynotes")
       }
-    },[userInfo])
+    },[userInfo,navigate])
 
     const submitHandler = async (e) => {
         e.preventDefault()
