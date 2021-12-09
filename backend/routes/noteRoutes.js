@@ -1,11 +1,11 @@
 const express = require("express");
-const { getNotes } = require("../controllers/notesController");
+const { getNotes, createNote } = require("../controllers/notesController");
 const { protect } = require("../middlewares/authMiddleware");
 
 const router = express.Router();
 
 router.route("/").get(protect, getNotes)
-// router.route("/create").post()
+router.route("/create").post(protect,createNote)
 // router.route("/:id").get().put().delete();
 
 

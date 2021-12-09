@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModal");
 const asyncHandler=require("express-async-handler");
+const Note = require("../models/noteModel");
 
 const protect = asyncHandler(async (req,res,next)=>{
     let token;
@@ -31,5 +32,7 @@ const protect = asyncHandler(async (req,res,next)=>{
         throw new Error("Not authorized, no token")
     }
 })
+
+
 
 module.exports = {protect}
