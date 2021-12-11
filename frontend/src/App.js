@@ -8,6 +8,7 @@ import MyNotes from './screens/MyNotes/MyNotes';
 import LoginScreen from './screens/LoginScreen/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen/RegisterScreen';
 import AddNote from './screens/AddNote/AddNote';
+import SingleNote from './screens/SingleNote/SingleNote';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/mynotes" element={<MyNotes/>} />
         <Route path="/login" element={<LoginScreen/>} />
         <Route path="/addnote" element={<AddNote/>} />
+        <Route path="/note/:id" element={<SingleNote/>} />
         <Route path="/register" element={<RegisterScreen/>} />
         </Routes>
       </main>

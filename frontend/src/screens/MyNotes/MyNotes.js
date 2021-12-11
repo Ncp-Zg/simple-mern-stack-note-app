@@ -16,6 +16,11 @@ const MyNotes = () => {
   const navigate = useNavigate()
 
   const userLogin = useSelector(state => state.userLogin)
+  const noteCreate = useSelector(state => state.noteCreate)
+  const { success: successCreate} = noteCreate
+
+  const noteUpdate = useSelector(state=> state.noteUpdate);
+  const {success: successUpdate} = noteUpdate;
 
   const { userInfo} = userLogin
 
@@ -34,7 +39,7 @@ const MyNotes = () => {
       navigate("/")
     }
   
-  },[dispatch])
+  },[dispatch, successCreate, navigate, userInfo, successUpdate])
 
   return (
     <div>
