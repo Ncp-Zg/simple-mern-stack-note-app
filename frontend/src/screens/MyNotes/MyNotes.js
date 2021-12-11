@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import MainScreen from "../../components/MainScreen";
 import { Accordion, Badge, Button, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { listNotes } from "../../actions/notesActions";
+import { deleteNoteAction, listNotes } from "../../actions/notesActions";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
 import { useNavigate } from "react-router";
@@ -22,6 +22,9 @@ const MyNotes = () => {
   const noteUpdate = useSelector(state=> state.noteUpdate);
   const {success: successUpdate} = noteUpdate;
 
+  const noteDelete = useSelector(state=> state.noteDelete);
+  const {loading : loadingDelete, error:errorDelete,success: successDelete} = noteDelete;
+
   const { userInfo} = userLogin
 
 
@@ -29,6 +32,7 @@ const MyNotes = () => {
   
   
   if (window.confirm("Are you sure?")) {
+    dispatch(deleteNoteAction(id))
     }
   };
 
@@ -39,7 +43,7 @@ const MyNotes = () => {
       navigate("/")
     }
   
-  },[dispatch, successCreate, navigate, userInfo, successUpdate])
+  },[dispatch, successCreate, navigate, userInfo, successUpdate, successDelete])
 
   return (
     <div>
@@ -49,8 +53,11 @@ const MyNotes = () => {
             Add a New Note
           </Button>
         </Link>
+        {errorDelete && (
+          <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>
+        )}
         {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
-        {loading && <Loading/>}
+        {(loadingDelete || loading) && <Loading/>}
         {notes?.reverse().map((note) => (
           <Accordion key={note._id}>
             <Card style={{ margin: 10 }}>
