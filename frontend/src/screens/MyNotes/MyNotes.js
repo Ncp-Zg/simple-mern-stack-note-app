@@ -46,7 +46,7 @@ const MyNotes = () => {
         </Link>
         {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
         {loading && <Loading/>}
-        {notes?.map((note) => (
+        {notes?.reverse().map((note) => (
           <Accordion key={note._id}>
             <Card style={{ margin: 10 }}>
               <Card.Header style={{ display: "flex" }}>
