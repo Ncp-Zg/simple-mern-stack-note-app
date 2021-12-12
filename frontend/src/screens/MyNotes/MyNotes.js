@@ -8,7 +8,7 @@ import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
 import { useNavigate } from "react-router";
 
-const MyNotes = () => {
+const MyNotes = ({search}) => {
 
   const dispatch = useDispatch();
   const noteList = useSelector(state=>state.noteList)
@@ -58,7 +58,9 @@ const MyNotes = () => {
         )}
         {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
         {(loadingDelete || loading) && <Loading/>}
-        {notes?.reverse().map((note) => (
+        {notes?.reverse().filter(filteredNote=>(
+          filteredNote.title.toLowerCase().includes(search.toLowerCase())
+        )).map((note) => (
           <Accordion key={note._id}>
             <Card style={{ margin: 10 }}>
               <Card.Header style={{ display: "flex" }}>
