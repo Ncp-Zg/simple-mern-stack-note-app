@@ -35,7 +35,6 @@ const ProfileScreen = () => {
     }
   }, [navigate]);
 
-  console.log(pic)
   const postDetails = (pics) => {
     if (!pic || !pics) {
       return setPicMessage("Please Select an Image");

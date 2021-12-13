@@ -15,7 +15,6 @@ import ProfileScreen from './screens/ProfileScreen/ProfileScreen';
 function App() {
 
   const[search,setSearch]=useState("")
-  console.log(search)
   return ( 
     <Router>
       <Header setSearch={setSearch}/>
